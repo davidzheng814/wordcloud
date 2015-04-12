@@ -1,0 +1,43 @@
+<html>
+
+<head>
+<script src = "jquery.js"></script>
+<script src = "WordCloudPackage.js"></script>
+<script src = "Word.js"></script>
+<script src = "WordCloud.js"></script>
+    
+<style>
+.textDimensionCalculation {
+    position: absolute;
+    visibility: hidden;
+    height: auto;
+    width: auto;
+    white-space: nowrap;
+}
+</style>
+
+</head>
+
+<body style = "font-size: 25px">
+
+<script>
+wc.WordCloud.addTempTag();
+var words = ["hello", "world", "my", "name", "is", "jeffrey", "lu", "whalsjdfkkasdfka", "aasdfklajkw12elfnvnwevaw"];
+var frequencies = [1, 10, 20, 2, 4, 30, 10, 1, 2];
+var wordcloud = new wc.WordCloud(words, frequencies);
+wordcloud.render();
+    
+wordcloud.animate();
+for (var i = 0; i < 10; i++) {
+    for (var j = 0; j < words.length; j++) {
+        var f = wordcloud.words[j].getFrequency();
+        wordcloud.words[j].setFrequency((f + 5) % 31 + 1);
+    }
+    wordcloud.animate();
+}
+
+</script>
+
+</body>
+
+</html>
