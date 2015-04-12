@@ -18,24 +18,33 @@
 
 </head>
 
-<body style = "font-size: 25px">
+<body style = "font-size: 30px">
 
 <script>
-wc.WordCloud.addTempTag();
-var words = ["hello", "world", "my", "name", "is", "jeffrey", "lu", "whalsjdfkkasdfka", "aasdfklajkw12elfnvnwevaw"];
-var frequencies = [1, 10, 20, 2, 4, 30, 10, 1, 2];
-var wordcloud = new wc.WordCloud(words, frequencies);
+var words = ["the", "for", "it", "to", "trying", "awesome", "a", "life", "and", "is", "in", "something", "you", "of", "tinyurl.com", "i", "happy"];
+var frequencies = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
+var wordsPerRow = 6;
+var wordcloud = new wc.WordCloud(words, frequencies, 1, -1, wordsPerRow);
+
 wordcloud.render();
-    
 wordcloud.animate();
+    
+//wordcloud.replace(4, 'hello', 3);
+
 for (var i = 0; i < 10; i++) {
     for (var j = 0; j < words.length; j++) {
         var f = wordcloud.words[j].getFrequency();
-        wordcloud.words[j].setFrequency((f + 5) % 31 + 1);
+        wordcloud.words[j].setFrequency((Math.random() * 31) % 31 + 1);
     }
     wordcloud.animate();
 }
 
+for (var j = 0; j < words.length; j++) {
+    wordcloud.words[j].animateOut();
+}
+//wordcloud.animate();
+
+//wordcloud.replace(4, 'hello', 3);
 </script>
 
 </body>
